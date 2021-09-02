@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Postcontroller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoruController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,5 @@ Route::get('/contact', function () {
     return view('contact');
 });
 Route::resource('posts',Postcontroller::class);
+
+Route::resource('category', CategoruController::class);
