@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\comment;
+use Illuminate\Console\Command;
 use Illuminate\Http\Request;
-use App\Models\Post;
 
-class Postcontroller extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class Postcontroller extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('post.index',compact('posts'));
+        $comments = comment::all();
+        return view('comments.index',compact('comments'));
     }
 
     /**
@@ -26,7 +26,7 @@ class Postcontroller extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        return view('comments.create');
     }
 
     /**
@@ -37,18 +37,17 @@ class Postcontroller extends Controller
      */
     public function store(Request $request)
     {
-        Post::create($request->all());
-
-        return redirect()->route('posts.index');
+        comment::create($request->all());
+        return redirect()->route('comments.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(comment $comment)
     {
         //
     }
@@ -56,39 +55,34 @@ class Postcontroller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(comment $comment)
     {
-        $post = Post::find($id);
-        return view('post.edit',compact('post'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, comment $comment)
     {
-        Post::find($id)->update($request->all());
-
-        return redirect()->route('posts.index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(comment $comment)
     {
-        Post::find($id)->delete();
-
-        return redirect()->route('posts.index');
+        //
     }
 }

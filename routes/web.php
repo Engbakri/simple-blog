@@ -3,6 +3,7 @@
 use App\Http\Controllers\Postcontroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoruController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,8 @@ use App\Http\Controllers\CategoruController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[Postcontroller::class,'index']);
+
 Route::get('/about', function () {
     return view('about');
 });
@@ -31,3 +31,5 @@ Route::get('/contact', function () {
 Route::resource('posts',Postcontroller::class);
 
 Route::resource('category', CategoruController::class);
+
+Route::resource('comments', CommentController::class);

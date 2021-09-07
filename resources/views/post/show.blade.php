@@ -7,14 +7,13 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <!-- Post preview-->
-                        <button class="btn btn-primary btn-sm"> Add</button>
-                        <table class="table table-light table-hover">
+                        <button> Add</button>
+                        <table class="table table-light">
                             <thead>
                                  <tr>
                                     <td>ID</td>
                                     <td>TITILE</td>
                                     <td>CONTENT</td>
-                                    <td>op</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -24,13 +23,8 @@
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->content }}</td>
                                         <td>
-                                            <a class="btn btn-success btn-sm" href="{{ route('posts.edit',$post->id) }}"> Edit</a>
-                                            <form action="{{ route('posts.destroy',$post->id) }}" method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm"> Delete</button>
-
-                                            </form>
+                                            <button> Edit</button>
+                                            <button> Delete</button>
                                         </td>
                                     </tr>
                                 @endforeach
