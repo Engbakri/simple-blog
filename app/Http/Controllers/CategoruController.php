@@ -14,7 +14,7 @@ class CategoruController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
+        $category = Category::latest()->paginate(5);
         return view('categories.index',compact('category'));
     }
 
@@ -25,7 +25,7 @@ class CategoruController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -36,7 +36,14 @@ class CategoruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:100',
+            'desc' => 'required|max:10'
+        ]);
+
+        Category::create($request->all());
+
+        return redirect()->route('category.index');
     }
 
     /**

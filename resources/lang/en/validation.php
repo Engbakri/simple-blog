@@ -79,9 +79,9 @@ return [
         'array' => 'The :attribute must not have more than :value items.',
     ],
     'max' => [
-        'numeric' => 'The :attribute must not be greater than :max.',
+        'numeric' => 'الحقل :attribute يجب ان تكون قيمتها اقل من :max.',
         'file' => 'The :attribute must not be greater than :max kilobytes.',
-        'string' => 'The :attribute must not be greater than :max characters.',
+        'string' => 'الحقل :attribute يجب ان تكون قيمتها اقل من :max.',
         'array' => 'The :attribute must not have more than :max items.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('dashboard.layouts.master')
 
 @section('content')
 <main class="mb-4">
