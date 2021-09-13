@@ -4,6 +4,7 @@ use App\Http\Controllers\Postcontroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoruController;
 use App\Http\Controllers\CommentController;
+use Illuminate\Routing\RouteGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +29,21 @@ Route::get('/onepost', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
-Route::resource('posts',Postcontroller::class);
+Route::middleware(['auth'])->group(function () {
 
-Route::resource('category', CategoruController::class);
+    Route::resource('posts', Postcontroller::class);
 
-Route::resource('comments', CommentController::class);
+    Route::resource('category', CategoruController::class);
+
+    Route::resource('comments', CommentController::class);
+});
+
+// Route::prefix('admin')->group(function(){
+//     Route::resource('posts', Postcontroller::class)->middleware('auth');
+// });
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

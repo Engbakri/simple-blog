@@ -1,5 +1,5 @@
 <!-- Title -->
-<title>نظام إدارةالعيادات والمعامل</title>
+<title>مدونة المبرمجين</title>
 <!-- Favicon -->
 <link rel="icon" href="{{URL::asset('assets/img/brand/favicon.png')}}" type="image/x-icon"/>
 <!-- Icons css -->
@@ -20,5 +20,4 @@
 
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 
-@livewireStyles
 

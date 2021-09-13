@@ -11,22 +11,22 @@
                             @csrf
 
                             <div class="form-floating">
-                                <input class="form-control" name="title" id="name" type="text" placeholder="أدخل عنوان المقال" />
+                                <input class="form-control" name="title" id="name" type="text" placeholder="أدخل عنوان المقال" required/>
                                 <label for="name">Title</label>
 
                             </div>
                             <div class="form-floating">
-                                <input class="form-control" name="content" id="name" type="text" placeholder="أدخل عنوان المقال" />
+                                <input class="form-control" name="content" id="name" type="text" placeholder="أدخل عنوان المقال" required/>
                                 <label for="name">Content</label>
 
                             </div>
                              <div class="form-floating">
-                                <input class="form-control" name="author" id="name" type="text" placeholder="أدخل عنوان المقال" />
+                                <input class="form-control" name="author" id="name" type="text" placeholder="أدخل عنوان المقال" required/>
                                 <label for="name">Author</label>
 
                             </div>
                              <div class="form-floating">
-                                <input class="form-control" name="category" id="name" type="text" placeholder="أدخل عنوان المقال" />
+                                <input class="form-control" name="category" id="name" type="text" placeholder="أدخل عنوان المقال" required/>
                                 <label for="name">Category</label>
 
                             </div>

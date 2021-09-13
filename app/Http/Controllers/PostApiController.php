@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\comment;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Psr\Http\Message\ResponseInterface;
 
-class Postcontroller extends Controller
+class PostApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class Postcontroller extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('post.index',compact('posts'));
+        return Post::all();
     }
 
     /**
@@ -26,7 +25,7 @@ class Postcontroller extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        //
     }
 
     /**
@@ -37,9 +36,9 @@ class Postcontroller extends Controller
      */
     public function store(Request $request)
     {
-        Post::create($request->all());
+       $post =  Post::create($request->all());
+        return response()->json($post);
 
-        return redirect()->route('posts.index')->with('success','تم حفظ المقال بنجاح');
     }
 
     /**
@@ -50,7 +49,8 @@ class Postcontroller extends Controller
      */
     public function show($id)
     {
-        //
+        $postshow = Post::findOrFail($id);
+        return response()->json($postshow);
     }
 
     /**
@@ -61,8 +61,7 @@ class Postcontroller extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id);
-        return view('post.edit',compact('post'));
+        //
     }
 
     /**
@@ -74,9 +73,8 @@ class Postcontroller extends Controller
      */
     public function update(Request $request, $id)
     {
-        Post::find($id)->update($request->all());
-
-        return redirect()->route('posts.index')->with('success', 'تم تعديل المقال بنجاح');;
+        $post =  Post::find($id)->update($request->all());
+        return response()->json($post);
     }
 
     /**
@@ -87,8 +85,6 @@ class Postcontroller extends Controller
      */
     public function destroy($id)
     {
-        Post::find($id)->delete();
-
-        return redirect()->route('posts.index');
+        return Post::findOrFail($id)->delete();
     }
 }
