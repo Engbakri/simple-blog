@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Psr\Http\Message\ResponseInterface;
+use App\Http\Controllers\Http;
+use App\Http\Controllers\BaseController as BaseController;
+use Validator;
+use App\Http\Resources\Post as PostResource;
 
 class PostApiController extends Controller
 {
@@ -15,7 +19,9 @@ class PostApiController extends Controller
      */
     public function index()
     {
-        return Post::all();
+        $posts = Post::all();
+        return $this->sendResponse(PostResource::collection($posts), 'Posts retrieved successfully.');
+
     }
 
     /**
